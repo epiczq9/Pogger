@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Timers;
+using UnityEngine.UI;
 
 public class GridMovement : MonoBehaviour
 {
@@ -11,6 +11,16 @@ public class GridMovement : MonoBehaviour
     public Animator animator;
     private bool highJump;
     private float rayLength = 1f;
+
+    public Text outputText;
+
+    private Vector2 startTouchPosition;
+    private Vector2 currentTouchPosition;
+    private Vector2 endTouchPosition;
+    private bool stopTouch = false;
+
+    public float swipeRange;
+    public float tapRange;
     // Start is called before the first frame update
     void Start() {
         highJump = false;
@@ -20,32 +30,26 @@ public class GridMovement : MonoBehaviour
     void Update()  {
         if (Input.GetAxis("Horizontal") < 0 && !isMoving) {
             transform.eulerAngles = new Vector3(0, 0, 0);
-            //animator.Play("Jump");
             StartCoroutine(MovePlayer(Vector3.left));
-            //Move(Vector3.left);
         }
         if (Input.GetAxis("Horizontal") > 0 && !isMoving) {
             transform.eulerAngles = new Vector3(0, 180, 0);
-            //animator.Play("Jump");
             StartCoroutine(MovePlayer(Vector3.right));
-            //Move(Vector3.right);
         }
         if (Input.GetAxis("Vertical") < 0 && !isMoving) {
             transform.eulerAngles = new Vector3(0, 270, 0);
-            //animator.Play("Jump");
             StartCoroutine(MovePlayer(Vector3.back));
-            //Move(Vector3.down);
         }
         if (Input.GetAxis("Vertical") > 0 && !isMoving) {
             transform.eulerAngles = new Vector3(0, 90, 0);
-            //animator.Play("Jump");
             StartCoroutine(MovePlayer(Vector3.forward));
-            //Move(Vector3.up);
         }
 
         if (Input.GetButton("Jump")) {
             animator.Play("HighJump");
         }
+
+        Swipe();
     }
 
     private IEnumerator MovePlayer(Vector3 direction) {
@@ -115,6 +119,50 @@ public class GridMovement : MonoBehaviour
 
         highJump = false;
         isMoving = false;
+    }
+
+    public void Swipe() {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+            startTouchPosition = Input.GetTouch(0).position;
+        }
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) {
+            currentTouchPosition = Input.GetTouch(0).position;
+            Vector2 Distance = currentTouchPosition - startTouchPosition;
+
+            if (!stopTouch) {
+                if (Distance.x < -swipeRange && Distance.y > swipeRange && !isMoving) {
+                    outputText.text = "UP LEFT";
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    StartCoroutine(MovePlayer(Vector3.left));
+                    stopTouch = true;
+                } else if (Distance.x > swipeRange && Distance.y < -swipeRange && !isMoving) {
+                    outputText.text = "DOWN RIGHT";
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+                    StartCoroutine(MovePlayer(Vector3.right));
+                    stopTouch = true;
+                } else if (Distance.x < -swipeRange && Distance.y < -swipeRange && !isMoving) {
+                    outputText.text = "DOWN LEFT";
+                    transform.eulerAngles = new Vector3(0, 270, 0);
+                    StartCoroutine(MovePlayer(Vector3.back));
+                    stopTouch = true;
+                } else if (Distance.x > swipeRange && Distance.y > swipeRange && !isMoving) {
+                    outputText.text = "UP RIGHT";
+                    transform.eulerAngles = new Vector3(0, 90, 0);
+                    StartCoroutine(MovePlayer(Vector3.forward));
+                    stopTouch = true;
+                }
+            }
+        }
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) {
+            stopTouch = false;
+            endTouchPosition = Input.GetTouch(0).position;
+            Vector2 Distance = endTouchPosition - startTouchPosition;
+
+            if (Mathf.Abs(Distance.x) < tapRange && Mathf.Abs(Distance.y) < tapRange) {
+                outputText.text = "Tap";
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other) {
