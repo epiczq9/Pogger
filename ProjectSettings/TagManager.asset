@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bounce
   - Wall
+  - DropDown
   layers:
   - Default
   - TransparentFX

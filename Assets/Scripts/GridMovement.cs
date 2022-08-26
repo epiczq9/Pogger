@@ -175,5 +175,14 @@ public class GridMovement : MonoBehaviour
                 StartCoroutine(MovePlayerHigher(newPos));
             }
         }
+        if (other.gameObject.CompareTag("DropDown")) {
+            if (!isMoving) {
+                Debug.Log("Drop");
+                transform.eulerAngles = new Vector3(0, 90, 0);
+                Vector3 newPos = Vector3.forward + Vector3.down;
+                highJump = true;
+                StartCoroutine(MovePlayerHigher(newPos));
+            }
+        }
     }
 }
