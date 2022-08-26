@@ -68,16 +68,22 @@ public class GridMovement : MonoBehaviour
             animator.Play("Jump");
         } else if (hit.collider.CompareTag("Player")) {
             animator.Play("Jump");
+        } else if (hit.collider.CompareTag("Bounce")) {
+            targetPos += Vector3.up;
+            animator.Play("HighJump");
+        } else if (hit.collider.CompareTag("DropDown")) {
+            targetPos += Vector3.down;
+            animator.Play("HighJump");
         }
 
         while (elapsedTime < timeToMove) {
             if (!rayHit) {
                 transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
-            } else if (hit.collider.CompareTag("Player")) {
-                transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
             } else if (hit.collider.CompareTag("Wall")) {
                 transform.position = origPos;
                 targetPos = origPos;
+            } else {
+                transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
             }
 
             elapsedTime += Time.deltaTime;
@@ -165,7 +171,9 @@ public class GridMovement : MonoBehaviour
         }
     }
 
+    /*
     private void OnTriggerStay(Collider other) {
+        
         if (other.gameObject.CompareTag("Bounce")) {
             if (!isMoving) {
                 Debug.Log("BOUNCY");
@@ -185,4 +193,5 @@ public class GridMovement : MonoBehaviour
             }
         }
     }
+    */
 }
