@@ -1,0 +1,142 @@
+fileFormatVersion: 2
+guid: bae312d49c327b448a5a0038f4106800
+ModelImporter:
+  serializedVersion: 20300
+  internalIDToNameTable:
+  - first:
+      74: 3936550650637524798
+    second: Cylinder.001|Cylinder.001Action
+  - first:
+      74: -4675414068180665352
+    second: Cylinder.001|Cylinder.001Action.001
+  - first:
+      74: 1527119534930120391
+    second: Cylinder.001|Cylinder.001|Cylinder.001|Body_09_jacket.003Action
+  - first:
+      74: 747868995331747758
+    second: Cylinder.001|Cylinder.001|Cylinder.001|Cylinder.016Action
+  - first:
+      74: 7493284547438319607
+    second: Cylinder.001|Cylinder.001|Cylinder.001|Cylinder.016Action.001
+  - first:
+      74: 4450221457403845586
+    second: Cylinder.001|Cylinder.001|Cylinder.001|PogoDJumpFront|PogoDJumpFront|PogoDJu
+  - first:
+      74: 3178016990973714864
+    second: Cylinder.001|Cylinder.001|Cylinder.001|PogoTest|Scene
+  - first:
+      74: 3410881634897791223
+    second: Cylinder.001|Cylinder.001|Cylinder.001|PogoTest|Scene.001
+  - first:
+      74: -1477149693013896732
+    second: Cylinder.001|Cylinder.001|Cylinder.001|Propeller.002Action
+  - first:
+      74: 2096130102867462707
+    second: Cylinder.001|Key|Cylinder.001|Body_09_jacket.003Action
+  - first:
+      74: -4703633209931920669
+    second: Cylinder.001|PogoDJumpFront|PogoDJumpFront|PogoDJumpFrontAction
+  - first:
+      74: 4563318725930665875
+    second: Cylinder.001|PogoDoubleJumpTest|Scene
+  - first:
+      74: 8029194350669699883
+    second: Cylinder.001|PogoTest|Scene
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
+using Timers;
 
 public class GridMovement : MonoBehaviour
 {
     public bool isMoving = false;
-    private Vector3 origPos, targetPos;
-    public float timeToMove = 0.5f;
+    private Vector3 origPos, targetPos, origLocalPos, targetLocalPos;
+    public float timeToMoveBase = 0.25f;
+    private float timeToMove;
     public Animator animator;
-    private bool highJump;
-    private float rayLength = 1f;
+    private readonly float rayLength = 1f;
+    public bool onFloat = false;
 
     public Text outputText;
 
@@ -21,26 +24,27 @@ public class GridMovement : MonoBehaviour
 
     public float swipeRange;
     public float tapRange;
-    // Start is called before the first frame update
+
+    public int points;
+
+    public CinemachineVirtualCamera vCam;
+
     void Start() {
-        highJump = false;
+        timeToMove = timeToMoveBase;
     }
 
-    // Update is called once per frame
+
     void Update()  {
         if (Input.GetAxis("Horizontal") < 0 && !isMoving) {
             transform.eulerAngles = new Vector3(0, 0, 0);
             StartCoroutine(MovePlayer(Vector3.left));
-        }
-        if (Input.GetAxis("Horizontal") > 0 && !isMoving) {
+        } else if (Input.GetAxis("Horizontal") > 0 && !isMoving) {
             transform.eulerAngles = new Vector3(0, 180, 0);
             StartCoroutine(MovePlayer(Vector3.right));
-        }
-        if (Input.GetAxis("Vertical") < 0 && !isMoving) {
+        } else if (Input.GetAxis("Vertical") < 0 && !isMoving) {
             transform.eulerAngles = new Vector3(0, 270, 0);
             StartCoroutine(MovePlayer(Vector3.back));
-        }
-        if (Input.GetAxis("Vertical") > 0 && !isMoving) {
+        } else if((Input.GetButtonDown("Fire1") || Input.GetAxis("Vertical") > 0) && !isMoving) {
             transform.eulerAngles = new Vector3(0, 90, 0);
             StartCoroutine(MovePlayer(Vector3.forward));
         }
@@ -52,14 +56,14 @@ public class GridMovement : MonoBehaviour
         Swipe();
     }
 
-    private IEnumerator MovePlayer(Vector3 direction) {
+    IEnumerator SimpleMove(Vector3 simpleTarget, float timeToSimpleMove) {
         isMoving = true;
 
         float elapsedTime = 0;
 
         origPos = transform.position;
-        targetPos = origPos + direction;
 
+<<<<<<< Updated upstream
         Vector3 rayPos = origPos + Vector3.up / 6;
         Ray ray = new Ray(rayPos, direction);
         Debug.DrawRay(ray.origin, ray.direction, Color.red);
@@ -87,18 +91,20 @@ public class GridMovement : MonoBehaviour
         /*
         while (elapsedTime < timeToMove) {
             transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
+=======
+        while (elapsedTime < timeToSimpleMove) {
+            transform.position = Vector3.Lerp(origPos, simpleTarget, (elapsedTime / timeToSimpleMove));
+>>>>>>> Stashed changes
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        */
 
-        transform.position = targetPos;
+        transform.position = simpleTarget;
 
-        highJump = false;
         isMoving = false;
     }
 
-    private IEnumerator MovePlayerHigher(Vector3 direction) {
+    private IEnumerator MovePlayer(Vector3 direction) {
         isMoving = true;
 
         float elapsedTime = 0;
@@ -106,18 +112,17 @@ public class GridMovement : MonoBehaviour
         origPos = transform.position;
         targetPos = origPos + direction;
 
-        animator.Play("HighJump");
+        RaycastForward(direction);
 
         while (elapsedTime < timeToMove) {
             transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        
 
-        transform.position = targetPos;
+        transform.position = new Vector3(Mathf.RoundToInt(targetPos.x), targetPos.y, Mathf.RoundToInt(targetPos.z));
 
-        highJump = false;
+        RaycastDown();
         isMoving = false;
     }
 
@@ -159,12 +164,88 @@ public class GridMovement : MonoBehaviour
             endTouchPosition = Input.GetTouch(0).position;
             Vector2 Distance = endTouchPosition - startTouchPosition;
 
-            if (Mathf.Abs(Distance.x) < tapRange && Mathf.Abs(Distance.y) < tapRange) {
+            if (Mathf.Abs(Distance.x) < tapRange && Mathf.Abs(Distance.y) < tapRange && !isMoving) {
                 outputText.text = "Tap";
+                transform.eulerAngles = new Vector3(0, 90, 0);
+                StartCoroutine(MovePlayer(Vector3.forward));
             }
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    void RaycastForward(Vector3 direction) {
+        Vector3 rayPos = origPos + Vector3.up / 6;
+        Ray rayForward = new Ray(rayPos, direction);
+        Debug.DrawRay(rayForward.origin, rayForward.direction, Color.red);
+        bool rayForHit = Physics.Raycast(rayForward, out RaycastHit hitFor, rayLength);
+        if (!rayForHit) {
+            timeToMove = timeToMoveBase;
+            targetPos = new Vector3(Mathf.RoundToInt(targetPos.x), targetPos.y, targetPos.z);
+            animator.Play("Jump");
+        } else if (hitFor.collider.CompareTag("Player")) {
+            timeToMove = timeToMoveBase;
+            animator.Play("Jump");
+        } else if (hitFor.collider.CompareTag("UpDown")) {
+            timeToMove = timeToMoveBase * 1.5f;
+            targetPos += Vector3.up * hitFor.collider.gameObject.GetComponent<UpDownValue>().value;
+            animator.Play("HighJump");
+        } else if (hitFor.collider.CompareTag("Launch")) {
+            timeToMove = timeToMoveBase;
+            targetPos += direction * 4;
+            animator.Play("HighJump");
+        } else if (hitFor.collider.CompareTag("Wall")) {
+            timeToMove = 0f;
+            transform.position = origPos;
+            targetPos = origPos;
+        } else {
+            timeToMove = timeToMoveBase;
+            animator.Play("Jump");
+        }
+    }
+
+    void RaycastDown() {
+        Vector3 rayPos = targetPos;
+        Ray rayDown = new Ray(rayPos + Vector3.up, Vector3.down);
+        Debug.DrawRay(rayDown.origin, rayDown.direction, Color.blue);
+        bool rayDownHit = Physics.Raycast(rayDown, out RaycastHit hitDown, rayLength*2);
+        if (!rayDownHit) {
+            Debug.Log("NATHING");
+        } else if (hitDown.collider.CompareTag("Water")) {
+            Debug.Log("DAS IST VATER");
+            float timeToSimpleMove = 1f;
+            Vector3 simpleTargetPos = targetPos + Vector3.down * 2;
+            vCam.Follow = null;
+            StartCoroutine(SimpleMove(simpleTargetPos, timeToSimpleMove));
+            GetComponent<GridMovement>().enabled = false;
+            TimersManager.SetTimer(this, 1.5f, ReloadScene);
+        } else if (hitDown.collider.CompareTag("Float")) {
+            Debug.Log("FLOAT");
+        }
+    }
+
+    void ReloadScene() {
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<MySceneManager>().RestartScene();
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("Float")) {
+            //onFloat = true;
+        }
+        if (other.gameObject.CompareTag("Coin")) {
+            Destroy(other.gameObject);
+            points += other.gameObject.GetComponent<Coin>().coinValue;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.CompareTag("Float")) {
+           //onFloat = false;
+        }
+    }
+
+    /*
+>>>>>>> Stashed changes
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.CompareTag("Bounce")) {
             if (!isMoving) {

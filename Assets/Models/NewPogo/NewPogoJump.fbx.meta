@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: 0f2fee3ee47d6b744b571da9e252bd53
+ModelImporter:
+  serializedVersion: 20300
+  internalIDToNameTable:
+  - first:
+      74: -4032475798249137842
+    second: Cylinder.016|Body_09_jacket.003Action
+  - first:
+      74: -6334899598786108299
+    second: Cylinder.016|Cylinder.016Action
+  - first:
+      74: -3437281897989081848
+    second: Cylinder.016|PogoTest|Scene
+  - first:
+      74: 5211364484701501447
+    second: Cylinder.016|PogoTest|Scene.001
+  - first:
+      74: 3188611680020128679
+    second: Cylinder.016|Propeller.002Action
+  - first:
+      74: 1985916571576673427
+    second: Body_09_jacket.003|Body_09_jacket.003Action
+  - first:
+      74: -5718208081154085930
+    second: Body_09_jacket.003|Cylinder.016Action
+  - first:
+      74: 5355110553268948270
+    second: Body_09_jacket.003|PogoTest|Scene
+  - first:
+      74: 7218903298031281679
+    second: Body_09_jacket.003|PogoTest|Scene.001
+  - first:
+      74: 3855792095101406945
+    second: Body_09_jacket.003|Propeller.002Action
+  - first:
+      74: -7022966638319267221
+    second: Propeller.002|Body_09_jacket.003Action
+  - first:
+      74: -695354575653530300
+    second: Propeller.002|Cylinder.016Action
+  - first:
+      74: -2122653673768488686
+    second: Propeller.002|PogoTest|Scene
+  - first:
+      74: 6974242574414857851
+    second: Propeller.002|PogoTest|Scene.001
+  - first:
+      74: -6163953848465966078
+    second: Propeller.002|Propeller.002Action
+  - first:
+      74: 3936550650637524798
+    second: Cylinder.001|Cylinder.001Action
+  - first:
+      74: -4675414068180665352
+    second: Cylinder.001|Cylinder.001Action.001
+  - first:
+      74: 1527119534930120391
+    second: Cylinder.001|Cylinder.001|Cylinder.001|Body_09_jacket.003Action
+  - first:
+      74: 747868995331747758
+    second: Cylinder.001|Cylinder.001|Cylinder.001|Cylinder.016Action
+  - first:
+      74: 7493284547438319607
+    second: Cylinder.001|Cylinder.001|Cylinder.001|Cylinder.016Action.001
+  - first:
+      74: 4450221457403845586
+    second: Cylinder.001|Cylinder.001|Cylinder.001|PogoDJumpFront|PogoDJumpFront|PogoDJu
+  - first:
+      74: 3178016990973714864
+    second: Cylinder.001|Cylinder.001|Cylinder.001|PogoTest|Scene
+  - first:
+      74: 3410881634897791223
+    second: Cylinder.001|Cylinder.001|Cylinder.001|PogoTest|Scene.001
+  - first:
+      74: -1477149693013896732
+    second: Cylinder.001|Cylinder.001|Cylinder.001|Propeller.002Action
+  - first:
+      74: 2096130102867462707
+    second: Cylinder.001|Key|Cylinder.001|Body_09_jacket.003Action
+  - first:
+      74: 4563318725930665875
+    second: Cylinder.001|PogoDoubleJumpTest|Scene
+  - first:
+      74: 8029194350669699883
+    second: Cylinder.001|PogoTest|Scene
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: NewPogoJump(Clone)
+      parentName: 
+      position: {x: -0, y: 0.3736127, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.00582357, y: 0.00582357, z: 0.005823568}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

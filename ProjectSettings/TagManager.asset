@@ -7,6 +7,11 @@ TagManager:
   - Bounce
   - Wall
   - DropDown
+  - Launch
+  - Water
+  - Float
+  - UpDown
+  - Coin
   layers:
   - Default
   - TransparentFX
