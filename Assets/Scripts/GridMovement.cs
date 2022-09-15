@@ -63,9 +63,8 @@ public class GridMovement : MonoBehaviour
 
         origPos = transform.position;
 
-<<<<<<< Updated upstream
         Vector3 rayPos = origPos + Vector3.up / 6;
-        Ray ray = new Ray(rayPos, direction);
+        Ray ray = new Ray(rayPos, simpleTarget);
         Debug.DrawRay(ray.origin, ray.direction, Color.red);
         bool rayHit = Physics.Raycast(ray, out RaycastHit hit, rayLength);
         if (!rayHit) {
@@ -74,11 +73,12 @@ public class GridMovement : MonoBehaviour
             animator.Play("Jump");
         }
 
+        /*
         while (elapsedTime < timeToMove) {
             if (!rayHit) {
                 transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
             } else if (hit.collider.CompareTag("Player")) {
-                transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
+                transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToSimpleMove));
             } else if (hit.collider.CompareTag("Wall")) {
                 transform.position = origPos;
                 targetPos = origPos;
@@ -87,21 +87,23 @@ public class GridMovement : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        */
 
-        /*
         while (elapsedTime < timeToMove) {
             transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
-=======
-        while (elapsedTime < timeToSimpleMove) {
-            transform.position = Vector3.Lerp(origPos, simpleTarget, (elapsedTime / timeToSimpleMove));
->>>>>>> Stashed changes
-            elapsedTime += Time.deltaTime;
-            yield return null;
+
+            while (elapsedTime < timeToSimpleMove) {
+                transform.position = Vector3.Lerp(origPos, simpleTarget, (elapsedTime / timeToSimpleMove));
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+
+            transform.position = simpleTarget;
+
+            isMoving = false;
         }
-
-        transform.position = simpleTarget;
-
-        isMoving = false;
     }
 
     private IEnumerator MovePlayer(Vector3 direction) {
@@ -172,8 +174,6 @@ public class GridMovement : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-=======
     void RaycastForward(Vector3 direction) {
         Vector3 rayPos = origPos + Vector3.up / 6;
         Ray rayForward = new Ray(rayPos, direction);
@@ -244,6 +244,7 @@ public class GridMovement : MonoBehaviour
         }
     }
 
+
     /*
 >>>>>>> Stashed changes
     private void OnTriggerStay(Collider other) {
@@ -266,4 +267,5 @@ public class GridMovement : MonoBehaviour
             }
         }
     }
+    */
 }
