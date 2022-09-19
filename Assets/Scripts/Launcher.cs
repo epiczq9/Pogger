@@ -6,12 +6,5 @@ public class Launcher : MonoBehaviour
 {
     public float verticalLaunchValue;
     public float horizontalLaunchValue;
-
-    void Start() {
-        
-    }
-
-    void Update()  {
-        
-    }
+    public Vector3 direction;
 }

@@ -12,6 +12,7 @@ TagManager:
   - Float
   - UpDown
   - Coin
+  - Bridge
   layers:
   - Default
   - TransparentFX

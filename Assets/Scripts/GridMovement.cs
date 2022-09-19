@@ -15,7 +15,7 @@ public class GridMovement : MonoBehaviour
     private readonly float rayLength = 1f;
     public bool onFloat = false;
 
-    public Text outputText;
+    //public Text outputText;
 
     private Vector2 startTouchPosition;
     private Vector2 currentTouchPosition;
@@ -129,22 +129,22 @@ public class GridMovement : MonoBehaviour
 
             if (!stopTouch) {
                 if (Distance.x < -swipeRange && Distance.y > swipeRange && !isMoving) {
-                    outputText.text = "UP LEFT";
+                    //outputText.text = "UP LEFT";
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     StartCoroutine(MovePlayer(Vector3.left));
                     stopTouch = true;
                 } else if (Distance.x > swipeRange && Distance.y < -swipeRange && !isMoving) {
-                    outputText.text = "DOWN RIGHT";
+                    //outputText.text = "DOWN RIGHT";
                     transform.eulerAngles = new Vector3(0, 180, 0);
                     StartCoroutine(MovePlayer(Vector3.right));
                     stopTouch = true;
                 } else if (Distance.x < -swipeRange && Distance.y < -swipeRange && !isMoving) {
-                    outputText.text = "DOWN LEFT";
+                    //outputText.text = "DOWN LEFT";
                     transform.eulerAngles = new Vector3(0, 270, 0);
                     StartCoroutine(MovePlayer(Vector3.back));
                     stopTouch = true;
                 } else if (Distance.x > swipeRange && Distance.y > swipeRange && !isMoving) {
-                    outputText.text = "UP RIGHT";
+                    //outputText.text = "UP RIGHT";
                     transform.eulerAngles = new Vector3(0, 90, 0);
                     StartCoroutine(MovePlayer(Vector3.forward));
                     stopTouch = true;
@@ -158,7 +158,7 @@ public class GridMovement : MonoBehaviour
             Vector2 Distance = endTouchPosition - startTouchPosition;
 
             if (Mathf.Abs(Distance.x) < tapRange && Mathf.Abs(Distance.y) < tapRange && !isMoving) {
-                outputText.text = "Tap";
+                //outputText.text = "Tap";
                 transform.eulerAngles = new Vector3(0, 90, 0);
                 StartCoroutine(MovePlayer(Vector3.forward));
             }
@@ -208,13 +208,17 @@ public class GridMovement : MonoBehaviour
             TimersManager.SetTimer(this, 1.5f, ReloadScene);
         } else if (hitDown.collider.CompareTag("Float")) {
             Debug.Log("FLOAT");
-        } else if (hitDown.collider.CompareTag("Launch")) {
-            float timeToSimpleMove = timeToMoveBase;
+        } /*else if (hitDown.collider.CompareTag("Launch")) {
             Launcher launcherScript = hitDown.collider.GetComponent<Launcher>();
-            Vector3 simpleTargetPos = targetPos - transform.right * launcherScript.verticalLaunchValue + Vector3.up * launcherScript.horizontalLaunchValue;
+            Vector3 simpleTargetPos = targetPos + launcherScript.direction * launcherScript.horizontalLaunchValue
+                + Vector3.up * launcherScript.verticalLaunchValue;
+            transform.right = - launcherScript.direction;
+            float timeToSimpleMove = timeToMoveBase * 2f;
+            float targetDistance = Vector3.Distance(targetPos, simpleTargetPos);
+            Debug.Log(targetDistance);
             animator.Play("HighJump");
             StartCoroutine(SimpleMove(simpleTargetPos, timeToSimpleMove));
-        }
+        }*/
     }
 
     void ReloadScene() {
@@ -225,6 +229,17 @@ public class GridMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Coin")) {
             Destroy(other.gameObject);
             points += other.gameObject.GetComponent<Coin>().coinValue;
+        }
+        if (other.gameObject.CompareTag("Launch")) {
+            Launcher launcherScript = other.gameObject.GetComponent<Launcher>();
+            Vector3 simpleTargetPos = targetPos + launcherScript.direction * launcherScript.horizontalLaunchValue
+                + Vector3.up * launcherScript.verticalLaunchValue;
+            transform.right = -launcherScript.direction;
+            float timeToSimpleMove = timeToMoveBase * 2f;
+            float targetDistance = Vector3.Distance(targetPos, simpleTargetPos);
+            Debug.Log(targetDistance);
+            animator.Play("LaunchJump");
+            StartCoroutine(SimpleMove(simpleTargetPos, timeToSimpleMove));
         }
     }
 
