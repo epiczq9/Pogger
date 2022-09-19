@@ -44,7 +44,7 @@ public class GridMovement : MonoBehaviour
         } else if (Input.GetAxis("Vertical") < 0 && !isMoving) {
             transform.eulerAngles = new Vector3(0, 270, 0);
             StartCoroutine(MovePlayer(Vector3.back));
-        } else if((Input.GetButtonDown("Fire1") || Input.GetAxis("Vertical") > 0) && !isMoving) {
+        } else if((Input.GetAxis("Vertical") > 0) && !isMoving) {
             transform.eulerAngles = new Vector3(0, 90, 0);
             StartCoroutine(MovePlayer(Vector3.forward));
         }
