@@ -67,11 +67,7 @@ public class GridMovement : MonoBehaviour
         Ray ray = new Ray(rayPos, simpleTarget);
         Debug.DrawRay(ray.origin, ray.direction, Color.red);
         bool rayHit = Physics.Raycast(ray, out RaycastHit hit, rayLength);
-        if (!rayHit) {
-            animator.Play("Jump");
-        } else if (hit.collider.CompareTag("Player")) {
-            animator.Play("Jump");
-        }
+        
 
         /*
         while (elapsedTime < timeToMove) {
@@ -89,21 +85,16 @@ public class GridMovement : MonoBehaviour
         }
         */
 
-        while (elapsedTime < timeToMove) {
-            transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
+        while (elapsedTime < timeToSimpleMove) {
+            transform.position = Vector3.Lerp(origPos, simpleTarget, (elapsedTime / timeToSimpleMove));
 
-            while (elapsedTime < timeToSimpleMove) {
-                transform.position = Vector3.Lerp(origPos, simpleTarget, (elapsedTime / timeToSimpleMove));
-
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-
-            transform.position = simpleTarget;
-
-            isMoving = false;
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
+
+        transform.position = new Vector3(Mathf.RoundToInt(simpleTarget.x), simpleTarget.y, Mathf.RoundToInt(simpleTarget.z));
+
+        isMoving = false;
     }
 
     private IEnumerator MovePlayer(Vector3 direction) {
@@ -190,10 +181,6 @@ public class GridMovement : MonoBehaviour
             timeToMove = timeToMoveBase * 1.5f;
             targetPos += Vector3.up * hitFor.collider.gameObject.GetComponent<UpDownValue>().value;
             animator.Play("HighJump");
-        } else if (hitFor.collider.CompareTag("Launch")) {
-            timeToMove = timeToMoveBase;
-            targetPos += direction * 4;
-            animator.Play("HighJump");
         } else if (hitFor.collider.CompareTag("Wall")) {
             timeToMove = 0f;
             transform.position = origPos;
@@ -208,7 +195,7 @@ public class GridMovement : MonoBehaviour
         Vector3 rayPos = targetPos;
         Ray rayDown = new Ray(rayPos + Vector3.up, Vector3.down);
         Debug.DrawRay(rayDown.origin, rayDown.direction, Color.blue);
-        bool rayDownHit = Physics.Raycast(rayDown, out RaycastHit hitDown, rayLength*2);
+        bool rayDownHit = Physics.Raycast(rayDown, out RaycastHit hitDown, rayLength * 2);
         if (!rayDownHit) {
             Debug.Log("NATHING");
         } else if (hitDown.collider.CompareTag("Water")) {
@@ -221,6 +208,12 @@ public class GridMovement : MonoBehaviour
             TimersManager.SetTimer(this, 1.5f, ReloadScene);
         } else if (hitDown.collider.CompareTag("Float")) {
             Debug.Log("FLOAT");
+        } else if (hitDown.collider.CompareTag("Launch")) {
+            float timeToSimpleMove = timeToMoveBase;
+            Launcher launcherScript = hitDown.collider.GetComponent<Launcher>();
+            Vector3 simpleTargetPos = targetPos - transform.right * launcherScript.verticalLaunchValue + Vector3.up * launcherScript.horizontalLaunchValue;
+            animator.Play("HighJump");
+            StartCoroutine(SimpleMove(simpleTargetPos, timeToSimpleMove));
         }
     }
 
@@ -229,9 +222,6 @@ public class GridMovement : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Float")) {
-            //onFloat = true;
-        }
         if (other.gameObject.CompareTag("Coin")) {
             Destroy(other.gameObject);
             points += other.gameObject.GetComponent<Coin>().coinValue;
