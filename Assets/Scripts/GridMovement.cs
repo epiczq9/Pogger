@@ -55,7 +55,19 @@ public class GridMovement : MonoBehaviour
 
         Swipe();
     }
+    IEnumerator HitPlayer(Vector3 direction) {
+        float elapsedTime = 0;
 
+        origPos = transform.position;
+        targetPos = origPos + direction * 3;
+
+        while (elapsedTime < timeToMove) {
+            transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+    }
     IEnumerator SimpleMove(Vector3 simpleTarget, float timeToSimpleMove) {
         isMoving = true;
 
@@ -241,6 +253,23 @@ public class GridMovement : MonoBehaviour
             animator.Play("LaunchJump");
             StartCoroutine(SimpleMove(simpleTargetPos, timeToSimpleMove));
         }
+        if (other.gameObject.CompareTag("Vehicle")) {
+            Debug.Log("KNOCKED DOON");
+            GameObject vehicle = other.gameObject;
+            HitByVehicle(vehicle);
+            
+        }
+    }
+
+    void HitByVehicle(GameObject vehicle) {
+        Vector3 launchDir = transform.position - vehicle.transform.position;
+        launchDir = new Vector3(launchDir.x, Mathf.Abs(launchDir.y), 0).normalized;
+        Debug.Log(launchDir);
+        vCam.Follow = null;
+        animator.Play("Hit");
+        GetComponent<GridMovement>().enabled = false;
+        TimersManager.SetTimer(this, 1.5f, ReloadScene);
+        StartCoroutine(HitPlayer(launchDir));
     }
 
     private void OnTriggerExit(Collider other) {
@@ -249,6 +278,9 @@ public class GridMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision) {
+        
+    }
 
     /*
 >>>>>>> Stashed changes
