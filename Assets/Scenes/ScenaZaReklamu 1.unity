@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5617,6 +5617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 4537165334336762214, guid: 731689e8bd0914148937ddfe3c596cdd, type: 3}
+  vehicles: []
   spawnInterval: 7
   vehicleSpeed: 6
   destroyTimer: 10
@@ -7003,6 +7004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 1977199592710055299, guid: cf4427aad4c47484183699144501f587, type: 3}
+  vehicles: []
   spawnInterval: 4
   vehicleSpeed: 20
   destroyTimer: 5
@@ -9148,6 +9150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 1839908114058860248, guid: 595965df62e637744a5d82af5e9f93a3, type: 3}
+  vehicles: []
   spawnInterval: 5
   vehicleSpeed: 6
   destroyTimer: 10
@@ -9405,6 +9408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 1839908114058860248, guid: 595965df62e637744a5d82af5e9f93a3, type: 3}
+  vehicles: []
   spawnInterval: 5
   vehicleSpeed: 6
   destroyTimer: 10
@@ -9978,6 +9982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 7331494150991538314, guid: 7501f3e672027344f860e2df00425da3, type: 3}
+  vehicles: []
   spawnInterval: 3
   vehicleSpeed: 5
   destroyTimer: 5
@@ -10274,6 +10279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 7167108492874714663, guid: 7402f0aacc5388e408aea4226b0ffd30, type: 3}
+  vehicles: []
   spawnInterval: 5
   vehicleSpeed: 6
   destroyTimer: 10
@@ -24138,6 +24144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 8963725478668300001, guid: e086583b2cb8c1b4f8a617be9ed89be8, type: 3}
+  vehicles: []
   spawnInterval: 4
   vehicleSpeed: 4
   destroyTimer: 10
@@ -28683,6 +28690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 8662164664304975537, guid: 6f3c1bcf0d2df1748ad853a00c330646, type: 3}
+  vehicles: []
   spawnInterval: 5
   vehicleSpeed: 20
   destroyTimer: 5
@@ -33059,6 +33067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 7167108492874714663, guid: 7402f0aacc5388e408aea4226b0ffd30, type: 3}
+  vehicles: []
   spawnInterval: 6
   vehicleSpeed: 5
   destroyTimer: 10
@@ -33106,6 +33115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 7167108492874714663, guid: 7402f0aacc5388e408aea4226b0ffd30, type: 3}
+  vehicles: []
   spawnInterval: 5
   vehicleSpeed: 6
   destroyTimer: 10
@@ -33227,6 +33237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 7167108492874714663, guid: 7402f0aacc5388e408aea4226b0ffd30, type: 3}
+  vehicles: []
   spawnInterval: 7
   vehicleSpeed: 5
   destroyTimer: 10
@@ -34405,6 +34416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 8963725478668300001, guid: e086583b2cb8c1b4f8a617be9ed89be8, type: 3}
+  vehicles: []
   spawnInterval: 5
   vehicleSpeed: 6
   destroyTimer: 10
@@ -35929,6 +35941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 8963725478668300001, guid: e086583b2cb8c1b4f8a617be9ed89be8, type: 3}
+  vehicles: []
   spawnInterval: 7
   vehicleSpeed: 5
   destroyTimer: 10
@@ -36999,6 +37012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 7331494150991538314, guid: 7501f3e672027344f860e2df00425da3, type: 3}
+  vehicles: []
   spawnInterval: 5
   vehicleSpeed: 5
   destroyTimer: 5
@@ -37517,6 +37531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 1839908114058860248, guid: 595965df62e637744a5d82af5e9f93a3, type: 3}
+  vehicles: []
   spawnInterval: 6
   vehicleSpeed: 5
   destroyTimer: 10
@@ -38629,6 +38644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 7331494150991538314, guid: 7501f3e672027344f860e2df00425da3, type: 3}
+  vehicles: []
   spawnInterval: 10
   vehicleSpeed: 5
   destroyTimer: 5
@@ -39499,6 +39515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 1977199592710055299, guid: cf4427aad4c47484183699144501f587, type: 3}
+  vehicles: []
   spawnInterval: 7
   vehicleSpeed: 20
   destroyTimer: 5
@@ -39874,6 +39891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 1839908114058860248, guid: 595965df62e637744a5d82af5e9f93a3, type: 3}
+  vehicles: []
   spawnInterval: 5
   vehicleSpeed: 6
   destroyTimer: 10
@@ -39986,6 +40004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehiclePrefab: {fileID: 4537165334336762214, guid: 731689e8bd0914148937ddfe3c596cdd, type: 3}
+  vehicles: []
   spawnInterval: 5
   vehicleSpeed: 5
   destroyTimer: 10

@@ -59,7 +59,7 @@ public class GridMovement : MonoBehaviour
         float elapsedTime = 0;
 
         origPos = transform.position;
-        targetPos = origPos + direction * 3;
+        targetPos = origPos + direction * 6;
 
         while (elapsedTime < timeToMove) {
             transform.position = Vector3.Lerp(origPos, targetPos, (elapsedTime / timeToMove));
@@ -209,9 +209,9 @@ public class GridMovement : MonoBehaviour
         Debug.DrawRay(rayDown.origin, rayDown.direction, Color.blue);
         bool rayDownHit = Physics.Raycast(rayDown, out RaycastHit hitDown, rayLength * 2);
         if (!rayDownHit) {
-            Debug.Log("NATHING");
+            //Debug.Log("NATHING");
         } else if (hitDown.collider.CompareTag("Water")) {
-            Debug.Log("DAS IST VATER");
+            //Debug.Log("DAS IST VATER");
             float timeToSimpleMove = 1f;
             Vector3 simpleTargetPos = targetPos + Vector3.down * 2;
             vCam.Follow = null;
@@ -219,7 +219,7 @@ public class GridMovement : MonoBehaviour
             GetComponent<GridMovement>().enabled = false;
             TimersManager.SetTimer(this, 1.5f, ReloadScene);
         } else if (hitDown.collider.CompareTag("Float")) {
-            Debug.Log("FLOAT");
+            //Debug.Log("FLOAT");
         } /*else if (hitDown.collider.CompareTag("Launch")) {
             Launcher launcherScript = hitDown.collider.GetComponent<Launcher>();
             Vector3 simpleTargetPos = targetPos + launcherScript.direction * launcherScript.horizontalLaunchValue
@@ -257,7 +257,15 @@ public class GridMovement : MonoBehaviour
             Debug.Log("KNOCKED DOON");
             GameObject vehicle = other.gameObject;
             HitByVehicle(vehicle);
-            
+        }
+        if (other.gameObject.CompareTag("Float")) {
+            transform.SetParent(other.gameObject.transform);
+        }
+    }
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.CompareTag("Float")) {
+            Debug.Log("FLOAT");
+            transform.SetParent(null);
         }
     }
 
@@ -270,16 +278,6 @@ public class GridMovement : MonoBehaviour
         GetComponent<GridMovement>().enabled = false;
         TimersManager.SetTimer(this, 1.5f, ReloadScene);
         StartCoroutine(HitPlayer(launchDir));
-    }
-
-    private void OnTriggerExit(Collider other) {
-        if (other.gameObject.CompareTag("Float")) {
-           //onFloat = false;
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision) {
-        
     }
 
     /*

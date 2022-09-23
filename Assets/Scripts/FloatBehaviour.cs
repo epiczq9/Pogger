@@ -10,7 +10,6 @@ public class FloatBehaviour : MonoBehaviour
     public bool toMove = true;
     public float timeToMove;
     private float timePassed;
-    public float xPos = 1;
     void Start() {
         
     }
@@ -26,7 +25,7 @@ public class FloatBehaviour : MonoBehaviour
 
         transform.position = Vector3.Lerp(startPos.position, endPos.position,  Mathf.PingPong(timePassed / timeToMove, 1));
     }
-
+    /*
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
             Debug.Log("Player IN");
@@ -42,4 +41,5 @@ public class FloatBehaviour : MonoBehaviour
             other.transform.SetParent(null);
         }
     }
+    */
 }

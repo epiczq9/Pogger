@@ -5,11 +5,11 @@ using Timers;
 
 public class SpawnVehicle : MonoBehaviour
 {
-    public GameObject vehiclePrefab;
+    //public GameObject vehiclePrefab;
     public GameObject[] vehicles;
     public float spawnInterval;
 
-    public float vehicleSpeed = 20f;
+    public float vehicleSpeed;
     public float destroyTimer;
 
     void Start() {
@@ -18,7 +18,7 @@ public class SpawnVehicle : MonoBehaviour
     }
 
     void SpawnTheTrain() {
-        GameObject go = Instantiate(vehicles[Random.Range(0, vehicles.Length)], transform);
+        GameObject go = Instantiate(vehicles[Random.Range(0, vehicles.Length-1)], transform);
         Vehicle vehicleScript = go.GetComponent<Vehicle>();
         vehicleScript.speed = vehicleSpeed;
         vehicleScript.destroyTimer = destroyTimer;
