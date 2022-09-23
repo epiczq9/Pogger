@@ -25,7 +25,8 @@ public class GridMovement : MonoBehaviour
     public float swipeRange;
     public float tapRange;
 
-    public int points;
+    public int score;
+    public Text scoreText;
 
     public CinemachineVirtualCamera vCam;
 
@@ -240,7 +241,8 @@ public class GridMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Coin")) {
             Destroy(other.gameObject);
-            points += other.gameObject.GetComponent<Coin>().coinValue;
+            score += other.gameObject.GetComponent<Coin>().coinValue;
+            scoreText.text = score.ToString();
         }
         if (other.gameObject.CompareTag("Launch")) {
             Launcher launcherScript = other.gameObject.GetComponent<Launcher>();
