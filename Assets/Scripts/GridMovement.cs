@@ -218,7 +218,7 @@ public class GridMovement : MonoBehaviour
             vCam.Follow = null;
             StartCoroutine(SimpleMove(simpleTargetPos, timeToSimpleMove));
             GetComponent<GridMovement>().enabled = false;
-            TimersManager.SetTimer(this, 1.5f, ReloadScene);
+            //TimersManager.SetTimer(this, 1.5f, ReloadScene);
         } else if (hitDown.collider.CompareTag("Float")) {
             //Debug.Log("FLOAT");
         } /*else if (hitDown.collider.CompareTag("Launch")) {
@@ -278,7 +278,7 @@ public class GridMovement : MonoBehaviour
         vCam.Follow = null;
         animator.Play("Hit");
         GetComponent<GridMovement>().enabled = false;
-        TimersManager.SetTimer(this, 1.5f, ReloadScene);
+        //TimersManager.SetTimer(this, 1.5f, ReloadScene);
         StartCoroutine(HitPlayer(launchDir));
     }
 
