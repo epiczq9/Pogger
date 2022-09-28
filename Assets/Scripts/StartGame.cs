@@ -10,7 +10,6 @@ public class StartGame : MonoBehaviour
     void Start() {
         TimersManager.SetTimer(this, 0.2f, StartTheGame);
     }
-
     void StartTheGame() {
         SceneManager.LoadScene(1);
     }

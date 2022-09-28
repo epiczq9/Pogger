@@ -29,9 +29,12 @@ public class GridMovement : MonoBehaviour
     public Text scoreText;
 
     public CinemachineVirtualCamera vCam;
+    public GameObject gameController;
+    MySceneManager sceneManagerScript;
 
     void Start() {
         timeToMove = timeToMoveBase;
+        sceneManagerScript = gameController.GetComponent<MySceneManager>();
     }
 
 
@@ -141,22 +144,22 @@ public class GridMovement : MonoBehaviour
             Vector2 Distance = currentTouchPosition - startTouchPosition;
 
             if (!stopTouch) {
-                if (Distance.x < -swipeRange && Distance.y > swipeRange && !isMoving) {
+                if (Distance.x < -swipeRange && !isMoving && Mathf.Abs(Distance.x) > Mathf.Abs(Distance.y)) {
                     //outputText.text = "UP LEFT";
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     StartCoroutine(MovePlayer(Vector3.left));
                     stopTouch = true;
-                } else if (Distance.x > swipeRange && Distance.y < -swipeRange && !isMoving) {
+                } else if (Distance.x > swipeRange && !isMoving && Mathf.Abs(Distance.x) > Mathf.Abs(Distance.y)) {
                     //outputText.text = "DOWN RIGHT";
                     transform.eulerAngles = new Vector3(0, 180, 0);
                     StartCoroutine(MovePlayer(Vector3.right));
                     stopTouch = true;
-                } else if (Distance.x < -swipeRange && Distance.y < -swipeRange && !isMoving) {
+                } else if (Distance.y < -swipeRange && !isMoving && Mathf.Abs(Distance.x) < Mathf.Abs(Distance.y)) {
                     //outputText.text = "DOWN LEFT";
                     transform.eulerAngles = new Vector3(0, 270, 0);
                     StartCoroutine(MovePlayer(Vector3.back));
                     stopTouch = true;
-                } else if (Distance.x > swipeRange && Distance.y > swipeRange && !isMoving) {
+                } else if (Distance.y > swipeRange && !isMoving && Mathf.Abs(Distance.x) < Mathf.Abs(Distance.y)) {
                     //outputText.text = "UP RIGHT";
                     transform.eulerAngles = new Vector3(0, 90, 0);
                     StartCoroutine(MovePlayer(Vector3.forward));
@@ -183,6 +186,9 @@ public class GridMovement : MonoBehaviour
         Ray rayForward = new Ray(rayPos, direction);
         Debug.DrawRay(rayForward.origin, rayForward.direction, Color.red);
         bool rayForHit = Physics.Raycast(rayForward, out RaycastHit hitFor, rayLength);
+        if(rayForHit) {
+            Debug.Log(hitFor.collider.tag);
+        }
         if (!rayForHit) {
             timeToMove = timeToMoveBase;
             targetPos = new Vector3(Mathf.RoundToInt(targetPos.x), targetPos.y, targetPos.z);
@@ -221,21 +227,15 @@ public class GridMovement : MonoBehaviour
             //TimersManager.SetTimer(this, 1.5f, ReloadScene);
         } else if (hitDown.collider.CompareTag("Float")) {
             //Debug.Log("FLOAT");
-        } /*else if (hitDown.collider.CompareTag("Launch")) {
-            Launcher launcherScript = hitDown.collider.GetComponent<Launcher>();
-            Vector3 simpleTargetPos = targetPos + launcherScript.direction * launcherScript.horizontalLaunchValue
-                + Vector3.up * launcherScript.verticalLaunchValue;
-            transform.right = - launcherScript.direction;
-            float timeToSimpleMove = timeToMoveBase * 2f;
-            float targetDistance = Vector3.Distance(targetPos, simpleTargetPos);
-            Debug.Log(targetDistance);
-            animator.Play("HighJump");
-            StartCoroutine(SimpleMove(simpleTargetPos, timeToSimpleMove));
-        }*/
+        }
     }
 
     void ReloadScene() {
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<MySceneManager>().RestartScene();
+        sceneManagerScript.RestartScene();
+    }
+
+    void NextScene() {
+        sceneManagerScript.LoadNextScene();
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -251,22 +251,22 @@ public class GridMovement : MonoBehaviour
             transform.right = -launcherScript.direction;
             float timeToSimpleMove = timeToMoveBase * 2f;
             float targetDistance = Vector3.Distance(targetPos, simpleTargetPos);
-            Debug.Log(targetDistance);
+            //Debug.Log(targetDistance);
             animator.Play("LaunchJump");
             StartCoroutine(SimpleMove(simpleTargetPos, timeToSimpleMove));
-        }
-        if (other.gameObject.CompareTag("Vehicle")) {
-            Debug.Log("KNOCKED DOON");
+        } else if (other.gameObject.CompareTag("Vehicle")) {
+            //Debug.Log("KNOCKED DOON");
             GameObject vehicle = other.gameObject;
             HitByVehicle(vehicle);
-        }
-        if (other.gameObject.CompareTag("Float")) {
+        } else if (other.gameObject.CompareTag("Float")) {
             transform.SetParent(other.gameObject.transform);
+        } else if (other.gameObject.CompareTag("Finish")) {
+            TimersManager.SetTimer(this, 2f, NextScene);
         }
     }
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.CompareTag("Float")) {
-            Debug.Log("FLOAT");
+            //Debug.Log("FLOAT");
             transform.SetParent(null);
         }
     }
@@ -278,31 +278,7 @@ public class GridMovement : MonoBehaviour
         vCam.Follow = null;
         animator.Play("Hit");
         GetComponent<GridMovement>().enabled = false;
-        //TimersManager.SetTimer(this, 1.5f, ReloadScene);
+        TimersManager.SetTimer(this, 1.5f, ReloadScene);
         StartCoroutine(HitPlayer(launchDir));
     }
-
-    /*
->>>>>>> Stashed changes
-    private void OnTriggerStay(Collider other) {
-        if (other.gameObject.CompareTag("Bounce")) {
-            if (!isMoving) {
-                Debug.Log("BOUNCY");
-                transform.eulerAngles = new Vector3(0, 90, 0);
-                Vector3 newPos = Vector3.forward + Vector3.up;
-                highJump = true;
-                StartCoroutine(MovePlayerHigher(newPos));
-            }
-        }
-        if (other.gameObject.CompareTag("DropDown")) {
-            if (!isMoving) {
-                Debug.Log("Drop");
-                transform.eulerAngles = new Vector3(0, 90, 0);
-                Vector3 newPos = Vector3.forward + Vector3.down;
-                highJump = true;
-                StartCoroutine(MovePlayerHigher(newPos));
-            }
-        }
-    }
-    */
 }
