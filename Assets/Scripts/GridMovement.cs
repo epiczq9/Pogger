@@ -224,7 +224,7 @@ public class GridMovement : MonoBehaviour
             vCam.Follow = null;
             StartCoroutine(SimpleMove(simpleTargetPos, timeToSimpleMove));
             GetComponent<GridMovement>().enabled = false;
-            //TimersManager.SetTimer(this, 1.5f, ReloadScene);
+            TimersManager.SetTimer(this, 1.5f, ReloadScene);
         } else if (hitDown.collider.CompareTag("Float")) {
             //Debug.Log("FLOAT");
         }
@@ -261,7 +261,7 @@ public class GridMovement : MonoBehaviour
         } else if (other.gameObject.CompareTag("Float")) {
             transform.SetParent(other.gameObject.transform);
         } else if (other.gameObject.CompareTag("Finish")) {
-            TimersManager.SetTimer(this, 2f, NextScene);
+            TimersManager.SetTimer(this, 1f, NextScene);
         }
     }
     private void OnTriggerExit(Collider other) {

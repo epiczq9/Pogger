@@ -3017,7 +3017,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155997276}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -195.01947, y: -114.853455, z: -150.79991}
+  m_LocalPosition: {x: -115.47786, y: -114.853455, z: -150.79991}
   m_LocalScale: {x: 105.9, y: 83.74592, z: 83.74592}
   m_Children: []
   m_Father: {fileID: 1503232865}
@@ -4471,7 +4471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 18530897910489540, guid: a679a5543dfa85040b10f2eae690a305, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 18530897910489540, guid: a679a5543dfa85040b10f2eae690a305, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5495,7 +5495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 18530897910489540, guid: a679a5543dfa85040b10f2eae690a305, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 18530897910489540, guid: a679a5543dfa85040b10f2eae690a305, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8442,8 +8442,8 @@ MonoBehaviour:
   - {fileID: 1839908114058860248, guid: 595965df62e637744a5d82af5e9f93a3, type: 3}
   - {fileID: 8963725478668300001, guid: 8d2421640af0ce745b7287bba3c6af82, type: 3}
   - {fileID: 7167108492874714663, guid: 7402f0aacc5388e408aea4226b0ffd30, type: 3}
-  spawnInterval: 2.2
-  vehicleSpeed: 6
+  spawnInterval: 3
+  vehicleSpeed: 5
   destroyTimer: 15
 --- !u!4 &480237205
 Transform:
@@ -40698,6 +40698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pink5x2x2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7fdb41372191184b8b2f7a0da30d9d6, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7fdb41372191184b8b2f7a0da30d9d6, type: 3}
 --- !u!1001 &2007141586
@@ -41276,58 +41280,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c33105cbf690ce49996e210a30b0f19, type: 3}
---- !u!114 &2064054817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5971322948346569831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drawingMode: 1
-  outlineLayer: 0
-  outlineTargets:
-  - edgeDilateAmount: 5
-    frontEdgeDilateAmount: 5
-    backEdgeDilateAmount: 5
-    Renderer: {fileID: 5971322948516203042}
-    SubmeshIndex: 0
-    ForceRecalculateBounds: 0
-    CutoutDescriptionType: 0
-    CutoutThreshold: 0.5
-    CullMode: 2
-    cutoutTextureName: 
-    DilateRenderingMode: 0
-    cutoutTextureIndex: 0
-  renderStyle: 2
-  outlineParameters:
-    enabled: 1
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
-  backParameters:
-    enabled: 1
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
-  frontParameters:
-    enabled: 1
-    color: {r: 1, g: 0.92158204, b: 0.015996292, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
 --- !u!1001 &2064679778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43704,7 +43656,6 @@ GameObject:
   - component: {fileID: 5971322948346569830}
   - component: {fileID: 5971322948346569828}
   - component: {fileID: 5971322948346569827}
-  - component: {fileID: 2064054817}
   m_Layer: 0
   m_Name: PogoKiddo
   m_TagString: Player
@@ -43830,7 +43781,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewPogoJump
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3887185075125053422, guid: 0f2fee3ee47d6b744b571da9e252bd53, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0f2fee3ee47d6b744b571da9e252bd53, type: 3}
 --- !u!4 &5971322948516203040 stripped
 Transform:
@@ -43842,11 +43794,55 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f2fee3ee47d6b744b571da9e252bd53, type: 3}
   m_PrefabInstance: {fileID: 5971322948516203039}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &5971322948516203042 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -3887185075125053422, guid: 0f2fee3ee47d6b744b571da9e252bd53, type: 3}
-  m_PrefabInstance: {fileID: 5971322948516203039}
+--- !u!23 &5971322948516203042
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971322948516203041}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -8084392384044852602, guid: 51ab9969c33439b46a3e2a393e7f95b1, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &5971322948516203043
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971322948516203041}
+  m_Mesh: {fileID: 2308769611242606669, guid: 51ab9969c33439b46a3e2a393e7f95b1, type: 3}
 --- !u!96 &5971322950094455067
 TrailRenderer:
   serializedVersion: 2

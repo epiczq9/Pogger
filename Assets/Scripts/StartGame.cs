@@ -8,7 +8,7 @@ public class StartGame : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start() {
-        TimersManager.SetTimer(this, 0.2f, StartTheGame);
+        TimersManager.SetTimer(this, 0.1f, StartTheGame);
     }
     void StartTheGame() {
         SceneManager.LoadScene(1);

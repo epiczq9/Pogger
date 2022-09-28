@@ -13,11 +13,11 @@ public class SpawnVehicle : MonoBehaviour
     public float destroyTimer;
 
     void Start() {
-        SpawnTheTrain();
-        TimersManager.SetLoopableTimer(this, spawnInterval, SpawnTheTrain);
+        SpawnTheVehicle();
+        TimersManager.SetLoopableTimer(this, spawnInterval, SpawnTheVehicle);
     }
 
-    void SpawnTheTrain() {
+    void SpawnTheVehicle() {
         GameObject go = Instantiate(vehicles[Random.Range(0, vehicles.Length-1)], transform);
         Vehicle vehicleScript = go.GetComponent<Vehicle>();
         vehicleScript.speed = vehicleSpeed;
