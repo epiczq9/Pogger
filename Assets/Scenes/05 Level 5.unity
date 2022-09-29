@@ -5258,7 +5258,7 @@ Transform:
   m_Children:
   - {fileID: 830774546}
   m_Father: {fileID: 228497125}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &140166709
 MonoBehaviour:
@@ -6334,66 +6334,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 86172b52b0e033c4e8590e8f9d883d02, type: 3}
   m_PrefabInstance: {fileID: 166784429}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &167543441
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 167543442}
-  - component: {fileID: 167543444}
-  - component: {fileID: 167543443}
-  m_Layer: 0
-  m_Name: Trampoline (12)
-  m_TagString: Launch
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &167543442
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167543441}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 228497125}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &167543443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167543441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902126545f609334088edd714dea6ad9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  verticalLaunchValue: 0
-  horizontalLaunchValue: 10
-  direction: {x: 0, y: 0, z: 1}
---- !u!65 &167543444
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167543441}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 1.05, z: 0.5}
-  m_Center: {x: 0, y: -0.48, z: 0}
 --- !u!1001 &170382794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8670,9 +8610,7 @@ Transform:
   m_LocalPosition: {x: 9, y: 0, z: 63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 485356085}
   - {fileID: 1811400080}
-  - {fileID: 167543442}
   - {fileID: 140166708}
   - {fileID: 740093640}
   - {fileID: 315709251}
@@ -12031,7 +11969,7 @@ Transform:
   m_Children:
   - {fileID: 2125352077}
   m_Father: {fileID: 228497125}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &315709252
 MonoBehaviour:
@@ -17315,66 +17253,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4255303921315048911, guid: b799df385db42bd409b46198a2f3d53a, type: 3}
   m_PrefabInstance: {fileID: 483563218}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &485356084
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 485356085}
-  - component: {fileID: 485356087}
-  - component: {fileID: 485356086}
-  m_Layer: 0
-  m_Name: Trampoline (7)
-  m_TagString: Launch
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &485356085
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485356084}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 228497125}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &485356086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485356084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902126545f609334088edd714dea6ad9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  verticalLaunchValue: 0
-  horizontalLaunchValue: 10
-  direction: {x: 0, y: 0, z: 1}
---- !u!65 &485356087
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485356084}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 1.05, z: 0.5}
-  m_Center: {x: 0, y: -0.48, z: 0}
 --- !u!1001 &486524935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26358,7 +26236,7 @@ Transform:
   m_Children:
   - {fileID: 1894771652}
   m_Father: {fileID: 228497125}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &740093641
 MonoBehaviour:
@@ -32150,7 +32028,7 @@ MonoBehaviour:
   - {fileID: 5295608002315111345, guid: be702e9b8bb54c0468f0fac2c7cad9cb, type: 3}
   spawnInterval: 4
   vehicleSpeed: 4
-  destroyTimer: 8
+  destroyTimer: 10
 --- !u!4 &894953072
 Transform:
   m_ObjectHideFlags: 0
@@ -39777,7 +39655,7 @@ MonoBehaviour:
   - {fileID: 5295608002315111345, guid: be702e9b8bb54c0468f0fac2c7cad9cb, type: 3}
   spawnInterval: 4
   vehicleSpeed: 3
-  destroyTimer: 10
+  destroyTimer: 12
 --- !u!4 &1120424592
 Transform:
   m_ObjectHideFlags: 0
@@ -56468,7 +56346,7 @@ MonoBehaviour:
   - {fileID: 5295608002315111345, guid: be702e9b8bb54c0468f0fac2c7cad9cb, type: 3}
   spawnInterval: 3
   vehicleSpeed: 2
-  destroyTimer: 10
+  destroyTimer: 15
 --- !u!4 &1573736771
 Transform:
   m_ObjectHideFlags: 0
@@ -57134,7 +57012,7 @@ MonoBehaviour:
   - {fileID: 5295608002315111345, guid: be702e9b8bb54c0468f0fac2c7cad9cb, type: 3}
   spawnInterval: 3
   vehicleSpeed: 3
-  destroyTimer: 10
+  destroyTimer: 12
 --- !u!4 &1588197158
 Transform:
   m_ObjectHideFlags: 0
@@ -65096,7 +64974,7 @@ Transform:
   m_Children:
   - {fileID: 1085017080}
   m_Father: {fileID: 228497125}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1811400081
 MonoBehaviour:
@@ -66255,7 +66133,7 @@ MonoBehaviour:
   - {fileID: 5295608002315111345, guid: be702e9b8bb54c0468f0fac2c7cad9cb, type: 3}
   spawnInterval: 4
   vehicleSpeed: 2
-  destroyTimer: 10
+  destroyTimer: 15
 --- !u!4 &1835636868
 Transform:
   m_ObjectHideFlags: 0
@@ -71314,7 +71192,7 @@ MonoBehaviour:
   - {fileID: 5295608002315111345, guid: be702e9b8bb54c0468f0fac2c7cad9cb, type: 3}
   spawnInterval: 4
   vehicleSpeed: 2
-  destroyTimer: 10
+  destroyTimer: 15
 --- !u!4 &1967975803
 Transform:
   m_ObjectHideFlags: 0
@@ -73083,7 +72961,7 @@ MonoBehaviour:
   - {fileID: 5295608002315111345, guid: be702e9b8bb54c0468f0fac2c7cad9cb, type: 3}
   spawnInterval: 3
   vehicleSpeed: 3
-  destroyTimer: 10
+  destroyTimer: 12
 --- !u!4 &2014984204
 Transform:
   m_ObjectHideFlags: 0
