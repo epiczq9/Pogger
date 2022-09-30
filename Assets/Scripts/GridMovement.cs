@@ -186,9 +186,11 @@ public class GridMovement : MonoBehaviour
         Ray rayForward = new Ray(rayPos, direction);
         Debug.DrawRay(rayForward.origin, rayForward.direction, Color.red);
         bool rayForHit = Physics.Raycast(rayForward, out RaycastHit hitFor, rayLength);
+        /*
         if(rayForHit) {
             Debug.Log(hitFor.collider.tag);
         }
+        */
         if (!rayForHit) {
             timeToMove = timeToMoveBase;
             targetPos = new Vector3(Mathf.RoundToInt(targetPos.x), targetPos.y, targetPos.z);
